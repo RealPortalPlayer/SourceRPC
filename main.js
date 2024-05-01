@@ -8,9 +8,12 @@ const {existsSync, unlinkSync, readFileSync} = require("fs")
 
 const settings = require("./settings.json")
 const client = require("discord-rich-presence")("1235280159012032593")
-const startedPlaying = Date.now()
+let startedPlaying = null
 
 const updatePresence = (state, details, hoverText) => {
+    if (startedPlaying == null)
+        startedPlaying = Date.now()
+
     const data = {
         startTimestamp: startedPlaying,
         partySize: 0,
