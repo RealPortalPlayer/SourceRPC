@@ -104,7 +104,7 @@ client.on("connected", () => {
                     `Map: ${maps[map] != null ? maps[map] : map}\n` +
                     `Map (Raw): ${map}\n` +
                     `Player count: ${realPlayerCount} player(s), ${botCount} bot(s) (${realPlayerCount + botCount}/${maxPlayers})`)
-        updatePresence(`Playing on ${maps[map] != null ? maps[map] : map}`, `${realPlayerCount + botCount}/${maxPlayers} players`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
+        updatePresence(`${realPlayerCount + botCount}/${maxPlayers} players`, `Playing on ${maps[map] != null ? maps[map] : map}`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
     }, 0)
 })
 
