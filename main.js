@@ -16,7 +16,10 @@ const settings = require("./settings.json")
  *     }
  * }
  */
-const information = require("./games/information.json")[settings.name]
+const information = require("./games/information.json")[settings.name] ?? {
+    "clientId": "1235352829053501470",
+    "multiplayer": true
+}
 const client = require("discord-rich-presence")(information.clientId)
 let startedPlaying = null
 
