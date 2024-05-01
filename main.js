@@ -46,7 +46,8 @@ const updatePresence = (state, details, hoverText) => {
     const data = {
         startTimestamp: startedPlaying,
         partySize: 0,
-        partyMax: 0
+        partyMax: 0,
+        largeImageKey: "game"
     }
     
     if (state != null && information.multiplayer)
