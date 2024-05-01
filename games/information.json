@@ -14,5 +14,9 @@
   "portal": {
     "clientId": "1235325855451058177",
     "multiplayer": false
+  },
+  "tf2": {
+    "clientId": "1235329082133188628",
+    "multiplayer": true
   }
 }
