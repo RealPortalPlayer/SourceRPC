@@ -10,6 +10,11 @@ const settings = require("./settings.json")
 const client = require("discord-rich-presence")("1235280159012032593")
 let startedPlaying = null
 
+/**
+ * @type {{[key: string]: string|null|undefined}}
+ */
+let maps = {}
+
 const updatePresence = (state, details, hoverText) => {
     if (startedPlaying == null)
         startedPlaying = Date.now()
@@ -32,13 +37,21 @@ const updatePresence = (state, details, hoverText) => {
     }
     
     client.updatePresence(data)
-
 }
 
 if (!existsSync(settings.gamePath)) {
     console.error(`Path not found: ${settings.gamePath}`)
     process.exit(1)
 }
+
+if (existsSync(`${__dirname}/maps/${settings.name}.json`)) {
+    try {
+        maps = require(`${__dirname}/maps/${settings.name}.json`)
+    } catch (error) {
+        console.error("Failed to load list of maps:\n", error)
+    }
+} else
+    console.warn("No pre-defined maps found")
 
 client.on("connected", () => {
     console.log("Connected")
@@ -78,9 +91,10 @@ client.on("connected", () => {
         console.log("State: Connected to server\n" +
                     `Hostname: ${hostname}\n` +
                     `VAC secured: ${secure}\n` +
-                    `Map: ${map}\n` +
+                    `Map: ${maps[map] != null ? maps[map] : map}\n` +
+                    `Map (Raw): ${map}\n` +
                     `Player count: ${realPlayerCount} player(s), ${botCount} bot(s) (${realPlayerCount + botCount}/${maxPlayers})`)
-        updatePresence(`Playing on ${map}`, `${realPlayerCount + botCount}/${maxPlayers} players`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
+        updatePresence(`Playing on ${maps[map] != null ? maps[map] : map}`, `${realPlayerCount + botCount}/${maxPlayers} players`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
     }, 0)
 })
 
