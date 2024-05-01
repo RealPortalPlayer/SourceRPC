@@ -1,4 +1,4 @@
 {
   "name": "l4d2",
-  "gamePath": "/home/kratcy/.steam/steam/steamapps/common/Left 4 Dead 2/left4dead2"
+  "steamApplicationsRoot": "/home/kratcy/.steam/steam/steamapps"
 }

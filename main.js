@@ -13,17 +13,20 @@ const settings = require("./settings.json")
  *     {
  *         clientId: string,
  *         multiplayer: boolean
- *         consoleDumpName: string
+ *         consoleDumpName: string,
+ *         path: string
  *     }
  * }
  */
 const information = require("./games/information.json")[settings.name] ?? {
     "clientId": "1235352829053501470",
     "multiplayer": true,
-    "consoleDumpName": "condump000.txt"
+    "consoleDumpName": "condump000.txt",
+    "path": ""
 }
 const client = require("discord-rich-presence")(information.clientId)
 let startedPlaying = null
+const fullPath = `${settings.steamApplicationsRoot}/${information.path}`
 
 /**
  * @type {{[key: string]: string|null|undefined}}
@@ -54,8 +57,8 @@ const updatePresence = (state, details, hoverText) => {
     client.updatePresence(data)
 }
 
-if (!existsSync(settings.gamePath)) {
-    console.error(`Path not found: ${settings.gamePath}`)
+if (!existsSync(fullPath)) {
+    console.error(`Path not found: ${fullPath}`)
     process.exit(1)
 }
 
@@ -79,16 +82,16 @@ client.on("connected", () => {
         
         alreadySaid = true
         
-        if (!existsSync(`${settings.gamePath}/${information.consoleDumpName}`))
+        if (!existsSync(`${fullPath}/${information.consoleDumpName}`))
             return
         
         alreadySaid = false
 
         console.log("Console dump found")
 
-        const contents = readFileSync(`${settings.gamePath}/${information.consoleDumpName}`).toString()
+        const contents = readFileSync(`${fullPath}/${information.consoleDumpName}`).toString()
 
-        unlinkSync(`${settings.gamePath}/${information.consoleDumpName}`)
+        unlinkSync(`${fullPath}/${information.consoleDumpName}`)
 
         if (!contents.includes("hostname:")) {
             console.log("State: Not connected")
