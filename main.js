@@ -7,7 +7,7 @@
 const {existsSync, unlinkSync, readFileSync} = require("fs")
 
 const settings = require("./settings.json")
-const ids = require("./ids.json")
+const ids = require("./games/ids.json")
 const client = require("discord-rich-presence")(ids[settings.name])
 let startedPlaying = null
 
@@ -45,9 +45,9 @@ if (!existsSync(settings.gamePath)) {
     process.exit(1)
 }
 
-if (existsSync(`${__dirname}/maps/${settings.name}.json`)) {
+if (existsSync(`${__dirname}/games/maps/${settings.name}.json`)) {
     try {
-        maps = require(`${__dirname}/maps/${settings.name}.json`)
+        maps = require(`${__dirname}/games/maps/${settings.name}.json`)
     } catch (error) {
         console.error("Failed to load list of maps:\n", error)
     }
