@@ -13,12 +13,14 @@ const settings = require("./settings.json")
  *     {
  *         clientId: string,
  *         multiplayer: boolean
+ *         consoleDumpName: string
  *     }
  * }
  */
 const information = require("./games/information.json")[settings.name] ?? {
     "clientId": "1235352829053501470",
-    "multiplayer": true
+    "multiplayer": true,
+    "consoleDumpName": "condump000.txt"
 }
 const client = require("discord-rich-presence")(information.clientId)
 let startedPlaying = null
@@ -77,16 +79,16 @@ client.on("connected", () => {
         
         alreadySaid = true
         
-        if (!existsSync(`${settings.gamePath}/condump000.txt`))
+        if (!existsSync(`${settings.gamePath}/${information.consoleDumpName}`))
             return
         
         alreadySaid = false
 
         console.log("Console dump found")
 
-        const contents = readFileSync(`${settings.gamePath}/condump000.txt`).toString()
+        const contents = readFileSync(`${settings.gamePath}/${information.consoleDumpName}`).toString()
 
-        unlinkSync(`${settings.gamePath}/condump000.txt`)
+        unlinkSync(`${settings.gamePath}/${information.consoleDumpName}`)
 
         if (!contents.includes("hostname:")) {
             console.log("State: Not connected")
