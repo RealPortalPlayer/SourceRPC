@@ -7,8 +7,17 @@
 const {existsSync, unlinkSync, readFileSync} = require("fs")
 
 const settings = require("./settings.json")
-const ids = require("./games/ids.json")
-const client = require("discord-rich-presence")(ids[settings.name])
+
+/**
+ * @type {
+ *     {
+ *         clientId: string,
+ *         multiplayer: boolean
+ *     }
+ * }
+ */
+const information = require("./games/information.json")[settings.name]
+const client = require("discord-rich-presence")(information.clientId)
 let startedPlaying = null
 
 /**
@@ -26,13 +35,13 @@ const updatePresence = (state, details, hoverText) => {
         partyMax: 0
     }
     
-    if (state != null)
+    if (state != null && information.multiplayer)
         data.state = state
     
     if (details != null)
         data.details = details
     
-    if (hoverText != null) {
+    if (hoverText != null && information.multiplayer) {
         data.largeImageText = hoverText
         data.smallImageText = hoverText
     }
