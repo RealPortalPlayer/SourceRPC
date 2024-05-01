@@ -7,6 +7,10 @@
 const {existsSync, unlinkSync, readFileSync} = require("fs")
 
 const settings = require("./settings.json")
+let name = settings.name
+
+if (process.argv.length >= 3)
+    name = process.argv[2].toLowerCase()
 
 /**
  * @type {
@@ -18,7 +22,7 @@ const settings = require("./settings.json")
  *     }
  * }
  */
-const information = require("./games/information.json")[settings.name] ?? {
+const information = require("./games/information.json")[name] ?? {
     "clientId": "1235352829053501470",
     "multiplayer": true,
     "consoleDumpName": "condump000.txt",
@@ -62,9 +66,9 @@ if (!existsSync(fullPath)) {
     process.exit(1)
 }
 
-if (existsSync(`${__dirname}/games/maps/${settings.name}.json`)) {
+if (existsSync(`${__dirname}/games/maps/${name}.json`)) {
     try {
-        maps = require(`${__dirname}/games/maps/${settings.name}.json`)
+        maps = require(`${__dirname}/games/maps/${name}.json`)
     } catch (error) {
         console.error("Failed to load list of maps:\n", error)
     }
