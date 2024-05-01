@@ -7,7 +7,8 @@
 const {existsSync, unlinkSync, readFileSync} = require("fs")
 
 const settings = require("./settings.json")
-const client = require("discord-rich-presence")("1235280159012032593")
+const ids = require("./ids.json")
+const client = require("discord-rich-presence")(ids[settings.name])
 let startedPlaying = null
 
 /**
