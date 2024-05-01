@@ -18,7 +18,8 @@ if (process.argv.length >= 3)
  *         clientId: string,
  *         multiplayer: boolean
  *         consoleDumpName: string,
- *         path: string
+ *         path: string,
+ *         dontAddBotsToTotal: boolean
  *     }
  * }
  */
@@ -26,7 +27,8 @@ const information = require("./games/information.json")[name] ?? {
     "clientId": "1235352829053501470",
     "multiplayer": true,
     "consoleDumpName": "condump000.txt",
-    "path": ""
+    "path": "",
+    "dontAddBotsToTotal": false
 }
 const client = require("discord-rich-presence")(information.clientId)
 let startedPlaying = null
@@ -109,14 +111,14 @@ client.on("connected", () => {
         const realPlayerCount = (contents.match(new RegExp("STEAM", "g")) || []).length
         const botCount = (contents.match(new RegExp("BOT", "g")) || []).length
         const maxPlayers = parseInt(contents.substring(contents.indexOf("players") + 10 + realPlayerCount.toString().length + 9 + botCount.toString().length + 7).split(" ")[0])
-
+        
         console.log("State: Connected to server\n" +
                     `Hostname: ${hostname}\n` +
                     `VAC secured: ${secure}\n` +
                     `Map: ${maps[map] != null ? maps[map] : map}\n` +
                     `Map (Raw): ${map}\n` +
                     `Player count: ${realPlayerCount} player(s), ${botCount} bot(s) (${realPlayerCount + botCount}/${maxPlayers})`)
-        updatePresence(`${realPlayerCount + botCount}/${maxPlayers} players`, `Playing on ${maps[map] != null ? maps[map] : map}`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
+        updatePresence(`${realPlayerCount + (!information.dontAddBotsToTotal ? botCount : 0)}/${maxPlayers} players`, `Playing on ${maps[map] != null ? maps[map] : map}`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
     }, 0)
 })
 
