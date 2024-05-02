@@ -33,5 +33,12 @@
     "consoleDumpName": "condump000.txt",
     "path": "common/Team Fortress 2/tf",
     "dontAddBotsToTotal": false
+  },
+  "portal2": {
+    "clientId": "1235427956529041418",
+    "multiplayer": true,
+    "consoleDumpName": "condump000.txt",
+    "path": "common/Portal 2/portal2",
+    "dontAddBotsToTotal": false
   }
 }
