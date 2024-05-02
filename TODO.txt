@@ -2,7 +2,6 @@ Source Engine games we need to support:
 Vampire: The Masquerade - Bloodines
 Half-Life: Source
 Day of Defeat: Source
-Half-Life 2: Lost Cost
 Garry's Mod
 SIN Episodes
 Dark Messiah of Might and Magic
