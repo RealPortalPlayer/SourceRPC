@@ -54,5 +54,12 @@
     "consoleDumpName": "condump000.txt",
     "path": "common/Half-Life 1 Source Deathmatch/hl1mp",
     "dontAddBotsToTotal": false
+  },
+  "css": {
+    "clientId": "1235531717008162816",
+    "multiplayer": true,
+    "consoleDumpName": "condump000.txt",
+    "path": "common/Counter-Strike Source/cstrike",
+    "dontAddBotsToTotal": false
   }
 }
