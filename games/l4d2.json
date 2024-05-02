@@ -3,5 +3,6 @@
   "multiplayer": true,
   "consoleDumpName": "condump000.txt",
   "path": "common/Left 4 Dead 2/left4dead2",
-  "dontAddBotsToTotal": true
+  "dontAddBotsToTotal": true,
+  "includeAllMaps": false
 }

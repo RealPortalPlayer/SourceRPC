@@ -3,5 +3,6 @@
   "multiplayer": true,
   "consoleDumpName": "condump000.txt",
   "path": "common/left 4 dead/left4dead",
-  "dontAddBotsToTotal": true
+  "dontAddBotsToTotal": true,
+  "includeAllMaps": false
 }

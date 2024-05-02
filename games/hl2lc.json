@@ -3,5 +3,6 @@
   "multiplayer": false,
   "consoleDumpName": "condump000.txt",
   "path": "common/Half-Life 2/lostcoast",
-  "dontAddBotsToTotal": false
+  "dontAddBotsToTotal": false,
+  "includeAllMaps": false
 }

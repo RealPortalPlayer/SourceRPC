@@ -4,7 +4,7 @@
 // Copyright (c) 2024, PortalPlayer <email@portalplayer.xyz>
 // Licensed under MIT <https://opensource.org/licenses/MIT>
 
-const {existsSync, unlinkSync, readFileSync} = require("fs")
+const {existsSync, unlinkSync, readFileSync, readdirSync} = require("fs")
 
 const settings = require("./settings.json")
 let name = settings.name
@@ -28,7 +28,8 @@ let information = {
     "multiplayer": true,
     "consoleDumpName": "condump000.txt",
     "path": "",
-    "dontAddBotsToTotal": false
+    "dontAddBotsToTotal": false,
+    "includeAllMaps": true
 }
 const client = require("discord-rich-presence")(information.clientId)
 let startedPlaying = null
@@ -78,7 +79,20 @@ if (existsSync(`${__dirname}/games/${name}.json`)) {
 } else
     console.warn("Game information does not exist")
 
-if (existsSync(`${__dirname}/games/maps/${name}.json`)) {
+if (information.includeAllMaps) {
+    for (const file of readdirSync(`${__dirname}/games/maps`)) {
+        try {
+            const map = require(`${__dirname}/games/maps/${file}`)
+            
+            maps = {
+                ...maps,
+                ...map
+            }
+        } catch (error) {
+            console.log("Failed to load list of maps:\n", error)
+        }
+    }
+} else if (existsSync(`${__dirname}/games/maps/${name}.json`)) {
     try {
         maps = require(`${__dirname}/games/maps/${name}.json`)
     } catch (error) {

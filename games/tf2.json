@@ -3,5 +3,6 @@
   "multiplayer": true,
   "consoleDumpName": "condump000.txt",
   "path": "common/Team Fortress 2/tf",
-  "dontAddBotsToTotal": false
+  "dontAddBotsToTotal": false,
+  "includeAllMaps": false
 }

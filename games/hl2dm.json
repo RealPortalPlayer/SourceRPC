@@ -3,5 +3,6 @@
   "multiplayer": true,
   "consoleDumpName": "condump000.txt",
   "path": "common/Half-Life 2 Deathmatch/hl2mp",
-  "dontAddBotsToTotal": false
+  "dontAddBotsToTotal": false,
+  "includeAllMaps": false
 }

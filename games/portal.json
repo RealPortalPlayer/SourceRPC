@@ -3,5 +3,6 @@
   "multiplayer": false,
   "consoleDumpName": "condump000.txt",
   "path": "common/Portal/portal",
-  "dontAddBotsToTotal": false
+  "dontAddBotsToTotal": false,
+  "includeAllMaps": false
 }
