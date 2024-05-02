@@ -68,5 +68,12 @@
     "consoleDumpName": "condump000.txt",
     "path": "common/Half-Life 2/episodic",
     "dontAddBotsToTotal": false
+  },
+  "hl2ep2": {
+    "clientId": "1235535085344657490",
+    "multiplayer": false,
+    "consoleDumpName": "condump000.txt",
+    "path": "common/Half-Life 2/ep2",
+    "dontAddBotsToTotal": false
   }
 }
