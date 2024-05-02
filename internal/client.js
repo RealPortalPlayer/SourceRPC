@@ -11,6 +11,22 @@ let client = null
 let startedPlaying = null
 let root = ""
 
+/**
+ * @type {
+ *     {
+ *         startTimestamp: number,
+ *         partySize: number,
+ *         partyMax: number,
+ *         largeImageKey: string,
+ *         state: string|null|undefined,
+ *         details: string|null|undefined,
+ *         largeImageText: string|null|undefined,
+ *         smallImageText: string|null|undefined
+ *     } | null
+ * }
+ */
+let lastPresence = null
+
 module.exports.get = async () => {
     if (client == null) {
         client = new Client({
@@ -50,6 +66,21 @@ module.exports.updatePresence = async (state, details, hoverText) => {
         data.largeImageText = hoverText
         data.smallImageText = hoverText
     }
+    
+    if (lastPresence != null &&
+        lastPresence.startTimestamp === data.startTimestamp &&
+        lastPresence.partySize === data.partySize &&
+        lastPresence.partyMax === data.partyMax &&
+        lastPresence.largeImageKey === data.largeImageKey &&
+        lastPresence.state === data.state &&
+        lastPresence.details === data.details &&
+        lastPresence.largeImageText === data.largeImageText &&
+        lastPresence.smallImageText === data.smallImageText) {
+        console.warn("Presence didn't changed, doing nothing")
+        return
+    }
+    
+    lastPresence = data
 
     await (await module.exports.get()).setActivity(data)
 }
@@ -62,6 +93,8 @@ module.exports.getRoot = () => root
 
 module.exports.clearPresence = async () => {
     await client.clearActivity()
+    
+    lastPresence = null
 }
 
 module.exports.disconnect = async () => {
