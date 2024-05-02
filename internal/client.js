@@ -59,3 +59,7 @@ module.exports.setRoot = path => {
 }
 
 module.exports.getRoot = () => root
+
+module.exports.clearPresence = async () => {
+    await client.clearActivity()
+}

@@ -28,6 +28,11 @@ const main = async () => {
         console.error(`Path not found: ${fullPath}`)
         process.exit(1)
     }
+    
+    process.on("SIGUSR1", async () => {
+        console.log("Signal detected: clearing presence")
+        await Client.clearPresence()
+    })
 
     let alreadySaid = false
     
@@ -63,11 +68,11 @@ const main = async () => {
         const maxPlayers = parseInt(contents.substring(contents.indexOf("players") + 10 + realPlayerCount.toString().length + 9 + botCount.toString().length + 7).split(" ")[0])
 
         console.log("State: Connected to server\n" +
-            `Hostname: ${hostname}\n` +
-            `VAC secured: ${secure}\n` +
-            `Map: ${Maps.get(map)}\n` +
-            `Map (Raw): ${map}\n` +
-            `Player count: ${realPlayerCount} player(s), ${botCount} bot(s) (${realPlayerCount + botCount}/${maxPlayers})`)
+                    `Hostname: ${hostname}\n` +
+                    `VAC secured: ${secure}\n` +
+                    `Map: ${Maps.get(map)}\n` +
+                    `Map (Raw): ${map}\n` +
+                    `Player count: ${realPlayerCount} player(s), ${botCount} bot(s) (${realPlayerCount + botCount}/${maxPlayers})`)
         await Client.updatePresence(`${realPlayerCount + (!Information.get().dontAddBotsToTotal ? botCount : 0)}/${maxPlayers} players`, `Playing on ${Maps.get(map)}`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
     }, 0)
 }
