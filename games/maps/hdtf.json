@@ -1,0 +1,60 @@
+{
+  "a0c0p0_bootcamp": "Bootcamp - Act 0/3, Chapter 0, Part 0/1",
+  "a0c0p1_blackmesa": "Black Mesa - Act 0/3, Chapter 0, Part 1/1",
+  
+  "a1c1p1_hospital": "Hospital 1 - Act 1/3, Chapter 1/5, Part 1/2",
+  "a1c1p2_hospital_2": "Hospital 2 - Act 1/3, Chapter 1/5, Part 2/2",
+  
+  "a1c2p1_downtown_1": "Downtown 1 - Act 1/3, Chapter 2/5, Part 1/3",
+  "a1c2p2_downtown_2": "Downtown 2 - Act 1/3, Chapter 2/5, Part 2/3",
+  "a1c2p3_office": "Office - Act 1/3, Chapter 2/5, Part 3/3",
+
+  "a1c3p1_canal": "Canal - Act 1/3, Chapter 3/5, Part 1/6",
+  "a1c3p2_urban": "Urban - Act 1/3, Chapter 3/5, Part 2/6",
+  "a1c3p3_metro_1": "Metro 1 - Act 1/3, Chapter 3/5, Part 3/6",
+  "a1c3p4_metro_2": "Metro 2 - Act 1/3, Chapter 3/5, Part 4/6",
+  "a1c3p5_metro_3": "Metro 3 - Act 1/3, Chapter 3/5, Part 5/6",
+  "a1c3p6_station": "Station - Act 1/3, Chapter 3/5, Part 6/6",
+
+  "a1c4p2_mesa": "Mesa - Act 1/3, Chapter 4/5, Part 1/3",
+  "a1c4p3_outlands_1": "Outlands 1 - Act 1/3, Chapter 4/5, Part 2/3",
+  "a1c4p4_factory": "Factory/Plant - Act 1/3, Chapter 4/5, Part 3/3",
+
+  "a1c5p1_pier_1": "Pier 1 - Act 1/3, Chapter 5/5, Part 1/3",
+  "a1c5p2_pier_2": "Pier 2 - Act 1/3, Chapter 5/5, Part 2/3",
+  "a1c5p4_ship": "Ship - Act 1/3, Chapter 5/5, Part 4/3",
+
+  "a2c1p1_alaska": "Walking through antlions - Act 2/3, Chapter 1/2, Part 1/2",
+  "a2c1p4_distribution_center": "??? - Act 2/3, Chapter 1/2, Part 1/2",
+  
+  "a2c2p1_lasers": "Walking through orbital lasers - Act 2/3, Chapter 2/2, Part 1/2",
+  "a2c2p2_factory": "Factory - Act 2/3, Chapter 2/2, Part 2/2",
+  
+  "a3c1p1_ship": "Ship - Act 3/3, Chapter 1/8, Part 1/2",
+  "a3c1p2_jump": "Jump - Act 3/3, Chapter 1/8, Part 2/2",
+  
+  "a3c2p1_ci17-1": "C17-1 - Act 3/3, Chapter 2/8, Part 1/4",
+  "a3c2p2_c17-2": "C17-2 - Act 3/3, Chapter 2/8, Part 2/4",
+  "a3c2p3_c17-3": "C17-3 - Act 3/3, Chapter 2/8, Part 3/4",
+  "a3c2p4_boris": "Boris - Act 3/3, Chapter 2/8, Part 4/4",
+  
+  "a3c3p1_blackmesaeast": "East Black Mesa - Act 3/3, Chapter 3/8, Part 1/4",
+  "a3c3p2_ravenholm": "Ravenholm - Act 3/3, Chapter 3/8, Part 2/4",
+  "a3c3p3_tunnel": "Tunnel - Act 3/3, Chapter 3/8, Part 3/4",
+  "a3c3p4_streetfight": "Street Fight - Act 3/3, Chapter 3/8, Part 4/4",
+  
+  "a3c4p1_cave": "Cave - Act 3/3, Chapter 4/8, Part 1/2",
+  "a3c4p2_bunker": "Bunker - Act 3/3, Chapter 4/8, Part 2/2",
+  
+  "a3c5p1_badcountry": "Bad Country - Act 3/3, Chapter 5/8, Part 1/2",
+  "a3c5p2_highway": "Highway - Act 3/3, Chapter 5/8, Part 2/2",
+  
+  "a3c6p1_novapro": "Nova Prospekt - Act 3/3, Chapter 6/8, Part 1/2",
+  "a3c6p2_novapro": "Nova Prospekt - Act 3/3, Chapter 6/8, Part 2/2",
+  
+  "a3c7p1_prison_1": "Prison 1 - Act 3/3, Chapter 7/8, Part 1/2",
+  "a3c7p2_prison_2": "Prison 2 - Act 3/3, Chapter 7/8, Part 2/2",
+  
+  "a3c8p1_forest": "Forest - Act 3/3, Chapter 8/8, Part 1/2",
+  "a3c8p2_outpost": "Cliff - Act 3/3, Chapter 8/8, Part 2/2"
+}
