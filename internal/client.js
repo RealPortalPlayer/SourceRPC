@@ -5,19 +5,31 @@
 // Licensed under MIT <https://opensource.org/licenses/MIT>
 
 const Information = require("./information")
+const {Client} = require("discord-rpc")
 
 let client = null
 let startedPlaying = null
 let root = ""
 
-module.exports.get = () => {
-    if (client == null)
-        client = require("discord-rich-presence")(Information.get().clientId)
+module.exports.get = async () => {
+    if (client == null) {
+        client = new Client({
+            transport: "ipc"
+        })
+        
+        console.log("Please wait")
+        
+        await client.login({
+            clientId: Information.get().clientId
+        })
+        
+        console.log("Connected")
+    }
     
     return client
 }
 
-module.exports.updatePresence = (state, details, hoverText) => {
+module.exports.updatePresence = async (state, details, hoverText) => {
     if (startedPlaying == null)
         startedPlaying = Date.now()
 
@@ -39,7 +51,7 @@ module.exports.updatePresence = (state, details, hoverText) => {
         data.smallImageText = hoverText
     }
 
-    module.exports.get().updatePresence(data)
+    await (await module.exports.get()).setActivity(data)
 }
 
 module.exports.setRoot = path => {

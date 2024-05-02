@@ -11,36 +11,35 @@ const Information = require("./internal/information")
 const Client = require("./internal/client")
 const Maps = require("./internal/maps")
 
-let name = settings.name
+const main = async () => {
+    let name = settings.name
 
-if (process.argv.length >= 3)
-    name = process.argv[2].toLowerCase()
+    if (process.argv.length >= 3)
+        name = process.argv[2].toLowerCase()
 
-Client.setRoot(__dirname)
-Information.load(name)
-Maps.load(name)
+    Client.setRoot(__dirname)
+    Information.load(name)
+    await Client.get()
+    Maps.load(name)
 
-const fullPath = `${settings.steamApplicationsRoot}/${Information.get().path}`
+    const fullPath = `${settings.steamApplicationsRoot}/${Information.get().path}`
 
-if (!existsSync(fullPath)) {
-    console.error(`Path not found: ${fullPath}`)
-    process.exit(1)
-}
+    if (!existsSync(fullPath)) {
+        console.error(`Path not found: ${fullPath}`)
+        process.exit(1)
+    }
 
-Client.get().on("connected", () => {
-    console.log("Connected")
-    
     let alreadySaid = false
     
-    setInterval(() => {
+    setInterval(async () => {
         if (!alreadySaid)
             console.log("Waiting for console dump")
-        
+
         alreadySaid = true
-        
+
         if (!existsSync(`${fullPath}/${Information.get().consoleDumpName}`))
             return
-        
+
         alreadySaid = false
 
         console.log("Console dump found")
@@ -51,7 +50,7 @@ Client.get().on("connected", () => {
 
         if (!contents.includes("hostname:")) {
             console.log("State: Not connected")
-            Client.updatePresence(null, "Idling", "Not connected")
+            await Client.updatePresence(null, "Idling", "Not connected")
             return
         }
 
@@ -62,15 +61,15 @@ Client.get().on("connected", () => {
         const realPlayerCount = (contents.match(new RegExp("STEAM", "g")) || []).length
         const botCount = (contents.match(new RegExp("BOT", "g")) || []).length
         const maxPlayers = parseInt(contents.substring(contents.indexOf("players") + 10 + realPlayerCount.toString().length + 9 + botCount.toString().length + 7).split(" ")[0])
-        
-        console.log("State: Connected to server\n" +
-                    `Hostname: ${hostname}\n` +
-                    `VAC secured: ${secure}\n` +
-                    `Map: ${Maps.get(map)}\n` +
-                    `Map (Raw): ${map}\n` +
-                    `Player count: ${realPlayerCount} player(s), ${botCount} bot(s) (${realPlayerCount + botCount}/${maxPlayers})`)
-        Client.updatePresence(`${realPlayerCount + (!Information.get().dontAddBotsToTotal ? botCount : 0)}/${maxPlayers} players`, `Playing on ${Maps.get(map)}`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
-    }, 0)
-})
 
-console.log("Please wait...")
+        console.log("State: Connected to server\n" +
+            `Hostname: ${hostname}\n` +
+            `VAC secured: ${secure}\n` +
+            `Map: ${Maps.get(map)}\n` +
+            `Map (Raw): ${map}\n` +
+            `Player count: ${realPlayerCount} player(s), ${botCount} bot(s) (${realPlayerCount + botCount}/${maxPlayers})`)
+        await Client.updatePresence(`${realPlayerCount + (!Information.get().dontAddBotsToTotal ? botCount : 0)}/${maxPlayers} players`, `Playing on ${Maps.get(map)}`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
+    }, 0)
+}
+
+main()
