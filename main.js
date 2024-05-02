@@ -33,10 +33,18 @@ const main = async () => {
         console.log("Signal detected: clearing presence")
         await Client.clearPresence()
     })
+    
+    let interval = null
+    
+    process.on("SIGINT", async () => {
+        console.log("Disconnecting")
+        clearInterval(interval)
+        await Client.disconnect()
+    })
 
     let alreadySaid = false
     
-    setInterval(async () => {
+    interval = setInterval(async () => {
         if (!alreadySaid)
             console.log("Waiting for console dump")
 

@@ -63,3 +63,7 @@ module.exports.getRoot = () => root
 module.exports.clearPresence = async () => {
     await client.clearActivity()
 }
+
+module.exports.disconnect = async () => {
+    await client.destroy()
+}
