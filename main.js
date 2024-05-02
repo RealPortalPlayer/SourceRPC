@@ -41,6 +41,24 @@ const main = async () => {
         clearInterval(interval)
         await Client.disconnect()
     })
+    
+    process.on("SIGINFO",  () => {
+        const presenceData = Client.getPresence()
+        
+        if (presenceData == null) {
+            console.error("There is no presence data")
+            return
+        }
+        
+        console.log("Presence data:\n" +
+                    `Start Timestamp: ${presenceData.startTimestamp}\n` +
+                    `Party Size: ${presenceData.partySize}\n` +
+                    `Party Max: ${presenceData.partyMax}\n` +
+                    `State: ${presenceData.state}\n` +
+                    `Details: ${presenceData.details}\n` +
+                    `Large Image Text: ${presenceData.largeImageText}\n` +
+                    `Small Image Text: ${presenceData.smallImageText}`)
+    })
 
     let alreadySaid = false
     

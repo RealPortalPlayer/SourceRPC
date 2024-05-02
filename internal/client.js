@@ -100,3 +100,7 @@ module.exports.clearPresence = async () => {
 module.exports.disconnect = async () => {
     await client.destroy()
 }
+
+module.exports.getPresence = () => {
+    return lastPresence
+}
