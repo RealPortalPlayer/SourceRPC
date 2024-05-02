@@ -106,6 +106,7 @@ client.on("connected", () => {
             return
         }
 
+        // TODO: This is very fragile, find a better alternative
         const hostname = contents.split("\n")[0].substring(10)
         const secure = contents.includes(" secure")
         const map = contents.substring(contents.indexOf("map") + 3).trimStart().substring(2).split(" ")[0]
