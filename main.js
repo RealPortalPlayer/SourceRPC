@@ -23,7 +23,7 @@ if (process.argv.length >= 3)
  *     }
  * }
  */
-const information = require("./games/information.json")[name] ?? {
+let information = {
     "clientId": "1235352829053501470",
     "multiplayer": true,
     "consoleDumpName": "condump000.txt",
@@ -68,6 +68,15 @@ if (!existsSync(fullPath)) {
     console.error(`Path not found: ${fullPath}`)
     process.exit(1)
 }
+
+if (existsSync(`${__dirname}/games/${name}.json`)) {
+    try {
+        information = require(`${__dirname}/games/${name}.json`)
+    } catch (error) {
+        console.error("Failed to load game information:\n", error)
+    }
+} else
+    console.warn("Game information does not exist")
 
 if (existsSync(`${__dirname}/games/maps/${name}.json`)) {
     try {
