@@ -7,101 +7,27 @@
 const {existsSync, unlinkSync, readFileSync, readdirSync} = require("fs")
 
 const settings = require("./settings.json")
+const Information = require("./internal/information")
+const Client = require("./internal/client")
+const Maps = require("./internal/maps")
+
 let name = settings.name
 
 if (process.argv.length >= 3)
     name = process.argv[2].toLowerCase()
 
-/**
- * @type {
- *     {
- *         clientId: string,
- *         multiplayer: boolean
- *         consoleDumpName: string,
- *         path: string,
- *         dontAddBotsToTotal: boolean
- *     }
- * }
- */
-let information = {
-    "clientId": "1235352829053501470",
-    "multiplayer": true,
-    "consoleDumpName": "condump000.txt",
-    "path": "",
-    "dontAddBotsToTotal": false,
-    "includeAllMaps": true
-}
-const client = require("discord-rich-presence")(information.clientId)
-let startedPlaying = null
-const fullPath = `${settings.steamApplicationsRoot}/${information.path}`
+Client.setRoot(__dirname)
+Information.load(name)
+Maps.load(name)
 
-/**
- * @type {{[key: string]: string|null|undefined}}
- */
-let maps = {}
-
-const updatePresence = (state, details, hoverText) => {
-    if (startedPlaying == null)
-        startedPlaying = Date.now()
-
-    const data = {
-        startTimestamp: startedPlaying,
-        partySize: 0,
-        partyMax: 0,
-        largeImageKey: "game"
-    }
-    
-    if (state != null && information.multiplayer)
-        data.state = state
-    
-    if (details != null)
-        data.details = details
-    
-    if (hoverText != null && information.multiplayer) {
-        data.largeImageText = hoverText
-        data.smallImageText = hoverText
-    }
-    
-    client.updatePresence(data)
-}
+const fullPath = `${settings.steamApplicationsRoot}/${Information.get().path}`
 
 if (!existsSync(fullPath)) {
     console.error(`Path not found: ${fullPath}`)
     process.exit(1)
 }
 
-if (existsSync(`${__dirname}/games/${name}.json`)) {
-    try {
-        information = require(`${__dirname}/games/${name}.json`)
-    } catch (error) {
-        console.error("Failed to load game information:\n", error)
-    }
-} else
-    console.warn("Game information does not exist")
-
-if (information.includeAllMaps) {
-    for (const file of readdirSync(`${__dirname}/games/maps`)) {
-        try {
-            const map = require(`${__dirname}/games/maps/${file}`)
-            
-            maps = {
-                ...maps,
-                ...map
-            }
-        } catch (error) {
-            console.log("Failed to load list of maps:\n", error)
-        }
-    }
-} else if (existsSync(`${__dirname}/games/maps/${name}.json`)) {
-    try {
-        maps = require(`${__dirname}/games/maps/${name}.json`)
-    } catch (error) {
-        console.error("Failed to load list of maps:\n", error)
-    }
-} else
-    console.warn("No pre-defined maps found")
-
-client.on("connected", () => {
+Client.get().on("connected", () => {
     console.log("Connected")
     
     let alreadySaid = false
@@ -112,20 +38,20 @@ client.on("connected", () => {
         
         alreadySaid = true
         
-        if (!existsSync(`${fullPath}/${information.consoleDumpName}`))
+        if (!existsSync(`${fullPath}/${Information.get().consoleDumpName}`))
             return
         
         alreadySaid = false
 
         console.log("Console dump found")
 
-        const contents = readFileSync(`${fullPath}/${information.consoleDumpName}`).toString()
+        const contents = readFileSync(`${fullPath}/${Information.get().consoleDumpName}`).toString()
 
-        unlinkSync(`${fullPath}/${information.consoleDumpName}`)
+        unlinkSync(`${fullPath}/${Information.get().consoleDumpName}`)
 
         if (!contents.includes("hostname:")) {
             console.log("State: Not connected")
-            updatePresence(null, "Idling", "Not connected")
+            Client.updatePresence(null, "Idling", "Not connected")
             return
         }
 
@@ -140,10 +66,10 @@ client.on("connected", () => {
         console.log("State: Connected to server\n" +
                     `Hostname: ${hostname}\n` +
                     `VAC secured: ${secure}\n` +
-                    `Map: ${maps[map] != null ? maps[map] : map}\n` +
+                    `Map: ${Maps.get(map)}\n` +
                     `Map (Raw): ${map}\n` +
                     `Player count: ${realPlayerCount} player(s), ${botCount} bot(s) (${realPlayerCount + botCount}/${maxPlayers})`)
-        updatePresence(`${realPlayerCount + (!information.dontAddBotsToTotal ? botCount : 0)}/${maxPlayers} players`, `Playing on ${maps[map] != null ? maps[map] : map}`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
+        Client.updatePresence(`${realPlayerCount + (!Information.get().dontAddBotsToTotal ? botCount : 0)}/${maxPlayers} players`, `Playing on ${Maps.get(map)}`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
     }, 0)
 })
 
