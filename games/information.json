@@ -47,5 +47,12 @@
     "consoleDumpName": "condump000.txt",
     "path": "common/Half-Life 2 Deathmatch/hl2mp",
     "dontAddBotsToTotal": false
+  },
+  "hldms": {
+    "clientId": "1235521454934593537",
+    "multiplayer": true,
+    "consoleDumpName": "condump000.txt",
+    "path": "common/Half-Life 1 Source Deathmatch/hl1mp",
+    "dontAddBotsToTotal": false
   }
 }
