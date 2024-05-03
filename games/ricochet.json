@@ -1,0 +1,9 @@
+{
+  "clientId": "1236051525915246693",
+  "multiplayer": true,
+  "consoleDumpName": "condump000.txt",
+  "path": "common/Half-Life/ricochet",
+  "dontAddBotsToTotal": false,
+  "includeAllMaps": false,
+  "engine": 0
+}
