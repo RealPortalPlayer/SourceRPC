@@ -1,0 +1,9 @@
+{
+  "clientId": "1236029063613906944",
+  "multiplayer": true,
+  "consoleDumpName": "condump000.txt",
+  "path": "common/Half-Life/valve",
+  "dontAddBotsToTotal": false,
+  "includeAllMaps": false,
+  "engine": 0
+}
