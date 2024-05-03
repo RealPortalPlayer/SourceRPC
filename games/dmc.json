@@ -1,0 +1,9 @@
+{
+  "clientId": "1236053754445303839",
+  "multiplayer": true,
+  "consoleDumpName": "condump000.txt",
+  "path": "common/Half-Life/dmc",
+  "dontAddBotsToTotal": false,
+  "includeAllMaps": false,
+  "engine": 0
+}
