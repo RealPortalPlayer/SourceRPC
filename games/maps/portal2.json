@@ -71,6 +71,7 @@
   "sp_a4_finale4": "Finale 4 - The Part Where He Kills You",
   
   "mp_coop_lobby_2": "Hub - Hub and Calibration Course",
+  "mp_coop_lobby_3": "Hub - Hub and Calibration Course",
   "mp_coop_start": "Calibration Course - Hub and Calibration Course",
   
   "mp_coop_doors": "Doors - Team Building (1/6)",
@@ -125,5 +126,7 @@
   "mp_coop_bridge_catch": "Bridge Catch - Art Therapy (6/9)",
   "mp_coop_laser_tbeam": "Double Lift - Art Therapy (7/9)",
   "mp_coop_paint_rat_maze": "Gel Maze - Art Therapy (8/9)",
-  "mp_coop_paint_crazy_box": "Crazier Box - Art Therapy (9/9)"
+  "mp_coop_paint_crazy_box": "Crazier Box - Art Therapy (9/9)",
+  
+  "mp_coop_credits": "Credits"
 }
