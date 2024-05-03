@@ -35,3 +35,17 @@ Day of Infamy
 Black Mesa
 G String
 Entropy : Zero 2
+
+GoldSrc games we need to support:
+Half-Life: Opposing Force
+Team Fortress: Classic
+Sven Co-op
+Counter-Strike
+Ricochet
+Deathmatch Classic
+Half-Life: Blue Shift
+James Bond 007: Nightfire
+Day of Defeat
+Counter-Strike: Condition Zero
+Counter-Strike Online
+Counter-Strike Nexon: Studio
