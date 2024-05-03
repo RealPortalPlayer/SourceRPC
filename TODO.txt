@@ -1,6 +1,5 @@
 Source Engine games we need to support:
 Vampire: The Masquerade - Bloodines
-Half-Life: Source
 Day of Defeat: Source
 SIN Episodes
 Dark Messiah of Might and Magic
