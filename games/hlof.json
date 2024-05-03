@@ -1,0 +1,9 @@
+{
+  "clientId": "1236039013757095999",
+  "multiplayer": true,
+  "consoleDumpName": "condump000.txt",
+  "path": "common/Half-Life/gearbox",
+  "dontAddBotsToTotal": false,
+  "includeAllMaps": false,
+  "engine": 0
+}

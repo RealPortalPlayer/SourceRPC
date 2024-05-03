@@ -37,7 +37,6 @@ G String
 Entropy : Zero 2
 
 GoldSrc games we need to support:
-Half-Life: Opposing Force
 Team Fortress: Classic
 Sven Co-op
 Counter-Strike
