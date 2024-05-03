@@ -14,7 +14,8 @@ let information = {
     "consoleDumpName": "condump000.txt",
     "path": "",
     "dontAddBotsToTotal": false,
-    "includeAllMaps": true
+    "includeAllMaps": true,
+    "engine": 1
 }
 
 module.exports.get = () => information
@@ -28,4 +29,13 @@ module.exports.load = name => {
         }
     } else
         console.warn("Game information does not exist")
+}
+
+module.exports.getEngineName = () => {
+    switch (information.engine) {
+        case 0: return "GoldSrc"
+        case 1: return "Source"
+        case 2: return "Source 2"
+        default: return "Unknown"
+    }
 }

@@ -4,5 +4,6 @@
   "consoleDumpName": "condump000.txt",
   "path": "common/Portal/portal",
   "dontAddBotsToTotal": false,
-  "includeAllMaps": false
+  "includeAllMaps": false,
+  "engine": 1
 }

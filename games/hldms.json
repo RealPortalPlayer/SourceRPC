@@ -4,5 +4,6 @@
   "consoleDumpName": "condump000.txt",
   "path": "common/Half-Life 1 Source Deathmatch/hl1mp",
   "dontAddBotsToTotal": false,
-  "includeAllMaps": false
+  "includeAllMaps": false,
+  "engine": 1
 }

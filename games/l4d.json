@@ -4,5 +4,6 @@
   "consoleDumpName": "condump000.txt",
   "path": "common/left 4 dead/left4dead",
   "dontAddBotsToTotal": true,
-  "includeAllMaps": false
+  "includeAllMaps": false,
+  "engine": 1
 }

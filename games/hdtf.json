@@ -4,5 +4,6 @@
   "consoleDumpName": "condump000.txt",
   "path": "common/Hunt Down The Freeman/HDtF",
   "dontAddBotsToTotal": false,
-  "includeAllMaps": false
+  "includeAllMaps": false,
+  "engine": 1
 }

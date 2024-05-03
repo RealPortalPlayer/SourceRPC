@@ -53,7 +53,9 @@ module.exports.updatePresence = async (state, details, hoverText) => {
         startTimestamp: startedPlaying,
         partySize: 0,
         partyMax: 0,
-        largeImageKey: "game"
+        largeImageKey: "game",
+        smallImageKey: "badge",
+        smallImageText: Information.getEngineName()
     }
 
     if (state != null && Information.get().multiplayer)
@@ -62,10 +64,8 @@ module.exports.updatePresence = async (state, details, hoverText) => {
     if (details != null)
         data.details = details
 
-    if (hoverText != null && Information.get().multiplayer) {
+    if (hoverText != null && Information.get().multiplayer)
         data.largeImageText = hoverText
-        data.smallImageText = hoverText
-    }
     
     if (lastPresence != null &&
         lastPresence.startTimestamp === data.startTimestamp &&

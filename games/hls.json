@@ -4,5 +4,6 @@
   "consoleDumpName": "condump000.txt",
   "path": "common/Half-Life 2/hl1",
   "dontAddBotsToTotal": false,
-  "includeAllMaps": false
+  "includeAllMaps": false,
+  "engine": 1
 }

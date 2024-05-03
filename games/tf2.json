@@ -4,5 +4,6 @@
   "consoleDumpName": "condump000.txt",
   "path": "common/Team Fortress 2/tf",
   "dontAddBotsToTotal": false,
-  "includeAllMaps": false
+  "includeAllMaps": false,
+  "engine": 1
 }

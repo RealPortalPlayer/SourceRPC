@@ -4,5 +4,6 @@
   "consoleDumpName": "condump000.txt",
   "path": "common/GarrysMod/garrysmod",
   "dontAddBotsToTotal": false,
-  "includeAllMaps": true
+  "includeAllMaps": true,
+  "engine": 1
 }

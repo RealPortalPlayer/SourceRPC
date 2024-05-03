@@ -4,5 +4,6 @@
   "consoleDumpName": "condump000.txt",
   "path": "common/Left 4 Dead 2/left4dead2",
   "dontAddBotsToTotal": true,
-  "includeAllMaps": false
+  "includeAllMaps": false,
+  "engine": 1
 }
