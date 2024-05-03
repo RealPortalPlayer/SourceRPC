@@ -10,6 +10,7 @@ const settings = require("./settings.json")
 const Information = require("./internal/information")
 const Client = require("./internal/client")
 const Maps = require("./internal/maps")
+const ConDump = require("./internal/condump")
 
 const main = async () => {
     let name = settings.name
@@ -75,31 +76,29 @@ const main = async () => {
 
         console.log("Console dump found")
 
-        const contents = readFileSync(`${fullPath}/${Information.get().consoleDumpName}`).toString()
+        let gameInformation
 
-        unlinkSync(`${fullPath}/${Information.get().consoleDumpName}`)
+        {
+            const contents = readFileSync(`${fullPath}/${Information.get().consoleDumpName}`).toString()
 
-        if (!contents.includes("hostname:")) {
+            unlinkSync(`${fullPath}/${Information.get().consoleDumpName}`)
+            
+            gameInformation = ConDump.parse(contents)
+        }
+
+        if (gameInformation == null) {
             console.log("State: Not connected")
             await Client.updatePresence(null, "Idling", "Not connected")
             return
         }
-
-        // TODO: This is very fragile, find a better alternative
-        const hostname = contents.split("\n")[0].substring(10)
-        const secure = contents.includes(" secure")
-        const map = contents.substring(contents.indexOf("map") + 3).trimStart().substring(2).split(" ")[0]
-        const realPlayerCount = (contents.match(new RegExp("STEAM", "g")) || []).length
-        const botCount = (contents.match(new RegExp("BOT", "g")) || []).length
-        const maxPlayers = parseInt(contents.substring(contents.indexOf("players") + 10 + realPlayerCount.toString().length + 9 + botCount.toString().length + 7).split(" ")[0])
-
+        
         console.log("State: Connected to server\n" +
-                    `Hostname: ${hostname}\n` +
-                    `VAC secured: ${secure}\n` +
-                    `Map: ${Maps.get(map)}\n` +
-                    `Map (Raw): ${map}\n` +
-                    `Player count: ${realPlayerCount} player(s), ${botCount} bot(s) (${realPlayerCount + botCount}/${maxPlayers})`)
-        await Client.updatePresence(`${realPlayerCount + (!Information.get().dontAddBotsToTotal ? botCount : 0)}/${maxPlayers} players`, `Playing on ${Maps.get(map)}`, `${realPlayerCount} player(s), ${botCount} bot(s)`)
+                    `Hostname: ${gameInformation.hostname}\n` +
+                    `VAC secured: ${gameInformation.secure}\n` +
+                    `Map: ${Maps.get(gameInformation.map)}\n` +
+                    `Map (Raw): ${gameInformation.map}\n` +
+                    `Player count: ${gameInformation.playerCount} player(s), ${gameInformation.botCount} bot(s) (${gameInformation.totalPlayerCount}/${gameInformation.maxPlayers})`)
+        await Client.updatePresence(`${gameInformation.totalPlayerCount}/${gameInformation.maxPlayers} players`, `Playing on ${Maps.get(gameInformation.map)}`, `${gameInformation.playerCount} player(s), ${gameInformation.botCount} bot(s)`)
     }, 0)
 }
 
