@@ -38,7 +38,6 @@ Entropy : Zero 2
 
 GoldSrc games we need to support:
 Sven Co-op
-Counter-Strike
 Ricochet
 Deathmatch Classic
 Half-Life: Blue Shift

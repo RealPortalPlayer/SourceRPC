@@ -1,0 +1,9 @@
+{
+  "clientId": "1236049854824710145",
+  "multiplayer": true,
+  "consoleDumpName": "condump000.txt",
+  "path": "common/Half-Life/cstrike",
+  "dontAddBotsToTotal": false,
+  "includeAllMaps": false,
+  "engine": 0
+}

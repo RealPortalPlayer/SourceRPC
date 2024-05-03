@@ -1,0 +1,27 @@
+{
+  "cs_747": "747 (Hostage scenario)",
+  "cs_assault": "Assault (Hostage scenario)",
+  "cs_backalley": "Back Alley (Hostage scenario)",
+  "cs_estate": "Estate (Hostage scenario)",
+  "cs_havana": "Havana (Hostage scenario)",
+  "cs_italy": "Italy (Hostage scenario)",
+  "cs_militia": "Militia (Hostage scenario)",
+  "cs_office": "Office (Hostage scenario)",
+  "cs_siege": "Siege (Hostage scenario)",
+  
+  "de_airstrip": "Airstrip (Bombing scenario)",
+  "de_aztec": "Aztec (Bombing scenario)",
+  "de_cbble": "Cbble (Bombing scenario)",
+  "cs_chateau": "Chateau (Bombing scenario)",
+  "de_dust": "Dust (Bombing scenario)",
+  "de_dust2": "Dust2 (Bombing scenario)",
+  "de_nuke": "Nuke (Bombing scenario)",
+  "de_piranesi": "Piranesi (Bombing scenario)",
+  "de_storm": "Storm (Bombing scenario)",
+  "de_survivor": "Survivor (Bombing scenario)",
+  "de_torn": "Torn (Bombing scenario)",
+  "de_train": "Train (Bombing scenario)",
+  "de_vertigo": "Vertigo (Bombing scenario)",
+  
+  "as_oilrig": "Oil Rig (Assassination scenario)"
+}
