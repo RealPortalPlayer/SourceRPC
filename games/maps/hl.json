@@ -118,5 +118,16 @@
   "t0a0b1": "Hazard Course - Part 4/7",
   "t0a0b2": "Hazard Course - Part 5/7",
   "t0a0c": "Hazard Course - Part 6/7",
-  "t0a0d": "Hazard Course - Part 7/7"
+  "t0a0d": "Hazard Course - Part 7/7",
+
+  "boot_camp": "Boot Camp",
+  "bounce": "Bounce",
+  "crossfire": "Crossfire",
+  "datacore": "Datacore",
+  "lambda_bunker": "Lambda Bunker",
+  "rapidcore": "Rapidcore",
+  "snarkpit": "Snark Pit",
+  "stalkyard": "Stalkyard",
+  "subtransit": "Subtransit",
+  "undertow": "Undertow"
 }
